@@ -3,7 +3,6 @@
 use App\Http\Controllers\admin\CompanyController;
 use App\Http\Controllers\admin\UrlController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,9 +19,6 @@ Route::middleware('auth')->group(function () {
     Route::any('/generate-url', [UrlController::class, 'index'])->name('generate.url');
     Route::any('/invite-company', [CompanyController::class, 'index'])->name('invite.company');
     Route::any('/invite-member', [UserController::class, 'inviteUser'])->name('invite.member');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';
